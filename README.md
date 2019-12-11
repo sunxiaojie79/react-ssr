@@ -10,6 +10,4 @@
 
 + 启动本地开发
 
-> npm run dev:server
-> npm run dev:start
-> npm run dev:client
+> npm start
