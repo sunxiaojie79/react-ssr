@@ -18,19 +18,20 @@ app.get('*', (req, res) => {
     if (match) {
       const {loadData} = route.component
       if (loadData) {
-        promises.push(new Promise((resolve, reject) => {
-          loadData(store)
-          .then(res => {
-            resolve(res)
-          })
-          .catch(e => {
-            resolve()
-          })
-        }))
+        // promises.push(new Promise((resolve, reject) => {
+        //   loadData(store)
+        //   .then(res => {
+        //     resolve(res)
+        //   })
+        //   .catch(e => {
+        //     resolve()
+        //   })
+        // }))
+        promises.push(loadData(store))
       }
     }
   })
-  Promise.all(promises).then(() => {
+  Promise.allSettled(promises).then(() => {
     const content = renderToString(
       <Provider store={store}>
         <StaticRouter location={req.url}>
@@ -60,5 +61,5 @@ app.get('*', (req, res) => {
 })
 
 app.listen(9093, () => {
-  console.log('running')
+  console.log('9093 is running')
 })
