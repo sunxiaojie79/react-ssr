@@ -63,7 +63,6 @@ app.get('*', (req, res) => {
         </StaticRouter>
       </Provider>
     )
-    debugger
     console.log('context', context)
     if (context.statusCode){
       res.status(context.statusCode)
